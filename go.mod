@@ -3,7 +3,7 @@ module github.com/openvex/discovery
 go 1.21
 
 require (
-	github.com/google/go-containerregistry v0.17.0
+	github.com/google/go-containerregistry v0.18.0
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.8.1
 	github.com/openvex/go-vex v0.2.5
 	github.com/package-url/packageurl-go v0.1.2
