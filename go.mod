@@ -6,7 +6,7 @@ require (
 	github.com/google/go-containerregistry v0.19.1
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.8.1
 	github.com/openvex/go-vex v0.2.5
-	github.com/package-url/packageurl-go v0.1.2
+	github.com/package-url/packageurl-go v0.1.3
 	github.com/sigstore/cosign/v2 v2.2.4
 	github.com/stretchr/testify v1.9.0
 )
