@@ -14,7 +14,7 @@ jobs:
         - name: Check out code onto GOPATH
           uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
 
-        - uses: imjasonh/setup-crane@00c9e93efa4e1138c9a7a5c594acd6c75a2fbf0c # v0.3
+        - uses: imjasonh/setup-crane@31b88efe9de28ae0ffa220711af4b60be9435f6e # v0.4
           name: Setup crane 🪿 ♥️ 🏗️
 
         - name: Install Cosign 🪿 ♥️ ·∫·
