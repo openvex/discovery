@@ -64,9 +64,9 @@ func TestGenerateReferenceIdentifiers(t *testing.T) {
 				Identifiers: map[vex.IdentifierType][]string{
 					vex.PURL: {
 						"pkg:oci/scanner-test@sha256%3Aa0acdc09bf31ac45076a5850d0564ee144a9c8483f89eb869dc6ddd6218629c9?repository_url=localhost%3A5000%2Fscanner-test",
-						"pkg:oci/scanner-test@sha256%3Aa0acdc09bf31ac45076a5850d0564ee144a9c8483f89eb869dc6ddd6218629c9?arch=amd64&os=linux&repository_url=localhost%3A5000&tag=unfixed-vulnerabilities-wolfi%2Fscanner-test",
+						"pkg:oci/scanner-test@sha256%3Aa0acdc09bf31ac45076a5850d0564ee144a9c8483f89eb869dc6ddd6218629c9?arch=amd64&os=linux&repository_url=localhost%3A5000%2Fscanner-test&tag=unfixed-vulnerabilities-wolfi",
 						"pkg:oci/scanner-test@sha256%3A86e3ee69ede5f56514972d16fcfcfafbb54a65d2349c6f8419670bf7993d8583?repository_url=localhost%3A5000%2Fscanner-test",
-						"pkg:oci/scanner-test@sha256%3A86e3ee69ede5f56514972d16fcfcfafbb54a65d2349c6f8419670bf7993d8583?arch=amd64&os=linux&repository_url=localhost%3A5000&tag=unfixed-vulnerabilities-wolfi%2Fscanner-test",
+						"pkg:oci/scanner-test@sha256%3A86e3ee69ede5f56514972d16fcfcfafbb54a65d2349c6f8419670bf7993d8583?arch=amd64&os=linux&repository_url=localhost%3A5000%2Fscanner-test&tag=unfixed-vulnerabilities-wolfi",
 					},
 				},
 				Hashes: map[vex.Algorithm][]vex.Hash{
