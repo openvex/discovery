@@ -144,7 +144,7 @@ func generateImagePurlVariants(registryString, imageName, digestString, tag, os,
 	// Purl with full qualifiers
 	qMap := map[string]string{}
 	if registryString != "" {
-		qMap["repository_url"] = strings.TrimSuffix(registryString, "/")
+		qMap["repository_url"] = registryString + imageName
 	}
 
 	purls = append(purls,
@@ -233,10 +233,8 @@ func PurlToReferenceString(purlString string, fopts ...RefConverterOptions) (str
 	qualifiers := p.Qualifiers.Map()
 
 	refString := p.Name
-	if _, ok := qualifiers["repository_url"]; ok {
-		refString = fmt.Sprintf(
-			"%s/%s", strings.TrimSuffix(qualifiers["repository_url"], "/"), p.Name,
-		)
+	if v, ok := qualifiers["repository_url"]; ok {
+		refString = v
 	} else if opts.DefaultRepository != "" {
 		refString = fmt.Sprintf(
 			"%s/%s", strings.TrimSuffix(opts.DefaultRepository, "/"), p.Name,
