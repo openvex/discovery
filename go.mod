@@ -1,6 +1,7 @@
 module github.com/openvex/discovery
 
-go 1.22
+go 1.22.5
+
 require (
 	github.com/google/go-containerregistry v0.20.1
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.8.1
