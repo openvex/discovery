@@ -362,8 +362,8 @@ github.com/letsencrypt/boulder v0.0.0-20240620165639-de9c06129bec h1:2tTW6cDth2T
 github.com/letsencrypt/boulder v0.0.0-20240620165639-de9c06129bec/go.mod h1:TmwEoGCwIti7BCeJ9hescZgRtatxRE+A72pCoPfmcfk=
 github.com/mailru/easyjson v0.9.0 h1:PrnmzHw7262yW8sTBwxi1PdJA3Iw/EKBa8psRf7d9a4=
 github.com/mailru/easyjson v0.9.0/go.mod h1:1+xMtQp2MRNVL/V1bOzuP3aP8VNwRW55fQUto+XFtTU=
-github.com/maxbrunsfeld/counterfeiter/v6 v6.9.0 h1:ERhc+PJKEyqWQnKu7/K0frSVGFihYYImqNdqP5r0cN0=
-github.com/maxbrunsfeld/counterfeiter/v6 v6.9.0/go.mod h1:tU2wQdIyJ7fib/YXxFR0dgLlFz3yl4p275UfUKmDFjk=
+github.com/maxbrunsfeld/counterfeiter/v6 v6.11.2 h1:yVCLo4+ACVroOEr4iFU1iH46Ldlzz2rTuu18Ra7M8sU=
+github.com/maxbrunsfeld/counterfeiter/v6 v6.11.2/go.mod h1:VzB2VoMh1Y32/QqDfg9ZJYHj99oM4LiGtqPZydTiQSQ=
 github.com/miekg/pkcs11 v1.1.1 h1:Ugu9pdy6vAYku5DEpVWVFPYnzV+bxB+iRdbuFSu7TvU=
 github.com/miekg/pkcs11 v1.1.1/go.mod h1:XsNlhZGX73bx86s2hdc/FuaLm2CPZJemRLMA+WTFxgs=
 github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=
@@ -400,8 +400,8 @@ github.com/onsi/gomega v1.7.1/go.mod h1:XdKZgCCFLUoM/7CFJVPcG8C1xQ1AJ0vpAezJrB7J
 github.com/onsi/gomega v1.10.1/go.mod h1:iN09h71vgCQne3DLsj+A5owkum+a2tYe+TOCB1ybHNo=
 github.com/onsi/gomega v1.17.0/go.mod h1:HnhC7FXeEQY45zxNK3PPoIUhzk/80Xly9PcubAlGdZY=
 github.com/onsi/gomega v1.19.0/go.mod h1:LY+I3pBVzYsTBU1AnDwOSxaYi9WoWiqgwooUqq9yPro=
-github.com/onsi/gomega v1.34.1 h1:EUMJIKUjM8sKjYbtxQI9A4z2o+rruxnzNvpknOXie6k=
-github.com/onsi/gomega v1.34.1/go.mod h1:kU1QgUvBDLXBJq618Xvm2LUX6rSAfRaFRTcdOeDLwwY=
+github.com/onsi/gomega v1.36.1 h1:bJDPBO7ibjxcbHMgSCoo4Yj18UWbKDlLwX1x9sybDcw=
+github.com/onsi/gomega v1.36.1/go.mod h1:PvZbdDc8J6XJEpDK4HCuRBm8a6Fzp9/DmhC9C7yFlog=
 github.com/open-policy-agent/opa v1.1.0 h1:HMz2evdEMTyNqtdLjmu3Vyx06BmhNYAx67Yz3Ll9q2s=
 github.com/open-policy-agent/opa v1.1.0/go.mod h1:T1pASQ1/vwfTa+e2fYcfpLCvWgYtqtiUv+IuA/dLPQs=
 github.com/opencontainers/go-digest v1.0.0 h1:apOUWs51W5PlhuyGyz9FCeeBIOUDA/6nW8Oi/yOhh5U=
