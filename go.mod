@@ -6,7 +6,7 @@ toolchain go1.23.6
 
 require (
 	github.com/google/go-containerregistry v0.20.3
-	github.com/maxbrunsfeld/counterfeiter/v6 v6.9.0
+	github.com/maxbrunsfeld/counterfeiter/v6 v6.11.2
 	github.com/openvex/go-vex v0.2.5
 	github.com/package-url/packageurl-go v0.1.3
 	github.com/sigstore/cosign/v2 v2.5.0
