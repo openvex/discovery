@@ -11,20 +11,18 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/google/go-containerregistry/pkg/name"
+	v1 "github.com/google/go-containerregistry/pkg/v1"
+	"github.com/openvex/go-vex/pkg/attestation"
+	"github.com/openvex/go-vex/pkg/vex"
 	purl "github.com/package-url/packageurl-go"
-
 	"github.com/sigstore/cosign/v2/pkg/cosign"
 	"github.com/sigstore/cosign/v2/pkg/oci"
 	ociremote "github.com/sigstore/cosign/v2/pkg/oci/remote"
 	"github.com/sigstore/cosign/v2/pkg/types"
 
-	"github.com/google/go-containerregistry/pkg/name"
-	v1 "github.com/google/go-containerregistry/pkg/v1"
-
 	"github.com/openvex/discovery/pkg/discovery/options"
 	doci "github.com/openvex/discovery/pkg/oci"
-	"github.com/openvex/go-vex/pkg/attestation"
-	"github.com/openvex/go-vex/pkg/vex"
 )
 
 type Prober struct {
@@ -44,7 +42,7 @@ func New() *Prober {
 //counterfeiter:generate . ociImplementation
 type ociImplementation interface {
 	VerifyOptions(*options.Options) error
-	PurlToReference(options.Options, purl.PackageURL) (name.Reference, error)
+	PurlToReference(options.Options, *purl.PackageURL) (name.Reference, error)
 	ResolveImageReference(options.Options, name.Reference) (oci.SignedEntity, error)
 	DownloadDocuments(options.Options, oci.SignedEntity) ([]*vex.VEX, error)
 }
@@ -73,12 +71,14 @@ func (pl *platformList) String() string {
 
 // FindDocumentsFromPurl implements the logic to search for OpenVEX documents
 // attached to a container image
+//
+//nolint:gocritic
 func (prober *Prober) FindDocumentsFromPurl(opts options.Options, p purl.PackageURL) ([]*vex.VEX, error) {
 	if err := prober.impl.VerifyOptions(&prober.Options); err != nil {
 		return nil, fmt.Errorf("verifying options: %w", err)
 	}
 
-	ref, err := prober.impl.PurlToReference(prober.Options, p)
+	ref, err := prober.impl.PurlToReference(prober.Options, &p)
 	if err != nil {
 		return nil, fmt.Errorf("translating purl to image reference: %w", err)
 	}
@@ -102,7 +102,7 @@ func (prober *Prober) FindDocumentsFromPurl(opts options.Options, p purl.Package
 
 // PurlToReference reads a purl and generates an image reference. It uses GGCR's
 // name package to parse it and returns the reference.
-func (di *defaultImplementation) PurlToReference(opts options.Options, p purl.PackageURL) (name.Reference, error) {
+func (di *defaultImplementation) PurlToReference(opts options.Options, p *purl.PackageURL) (name.Reference, error) {
 	refString, err := doci.PurlToReferenceString(p.String())
 	if err != nil {
 		return nil, err
@@ -151,15 +151,19 @@ func (di *defaultImplementation) ResolveImageReference(opts options.Options, ref
 	// ociremoteOpts := []ociremote.Option{ociremote.WithRemoteOptions(o.GetRegistryClientOpts(ctx)...)}
 
 	// Support tag prefix
-	if opts.ProberOptions[purl.TypeOCI].(localOptions).TagPrefix != "" {
-		ociremoteOpts = append(ociremoteOpts, ociremote.WithPrefix(opts.ProberOptions[purl.TypeOCI].(localOptions).TagPrefix))
+	lo, ok := opts.ProberOptions[purl.TypeOCI].(localOptions)
+	if !ok {
+		return nil, fmt.Errorf("unable to cast local options from options set")
+	}
+	if lo.TagPrefix != "" {
+		ociremoteOpts = append(ociremoteOpts, ociremote.WithPrefix(lo.TagPrefix))
 	}
 
 	// Registry override. From options or env
 	var targetRepoOverride name.Repository
 	var err error
-	if opts.ProberOptions[purl.TypeOCI].(localOptions).RepositoryOverride != "" {
-		targetRepoOverride, err = name.NewRepository(opts.ProberOptions[purl.TypeOCI].(localOptions).RepositoryOverride)
+	if lo.RepositoryOverride != "" {
+		targetRepoOverride, err = name.NewRepository(lo.RepositoryOverride)
 		if err != nil {
 			return nil, fmt.Errorf("parsing override repository option")
 		}
@@ -181,17 +185,17 @@ func (di *defaultImplementation) ResolveImageReference(opts options.Options, ref
 	idx, isIndex := se.(oci.SignedImageIndex)
 
 	// We only allow --platform on multiarch indexes
-	if opts.ProberOptions[purl.TypeOCI].(localOptions).Platform != "" && !isIndex {
+	if lo.Platform != "" && !isIndex {
 		return nil, fmt.Errorf("specified reference is not a multiarch image")
 	}
 
 	// If a platform was specified, then we return the corresponding
 	// single arch image if there is one
-	if opts.ProberOptions[purl.TypeOCI].(localOptions).Platform != "" && isIndex {
+	if lo.Platform != "" && isIndex {
 		opts.Logger.DebugContext(
 			opts.Context, "Reference is an index and arch %s defined", "imageRef", ref.String(),
 		)
-		targetPlatform, err := v1.ParsePlatform(opts.ProberOptions[purl.TypeOCI].(localOptions).Platform)
+		targetPlatform, err := v1.ParsePlatform(lo.Platform)
 		if err != nil {
 			return nil, fmt.Errorf("parsing platform: %w", err)
 		}

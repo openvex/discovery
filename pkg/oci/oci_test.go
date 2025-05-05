@@ -6,9 +6,8 @@ package oci
 import (
 	"testing"
 
-	"github.com/stretchr/testify/require"
-
 	"github.com/openvex/go-vex/pkg/vex"
+	"github.com/stretchr/testify/require"
 )
 
 func TestGenerateReferenceIdentifiers(t *testing.T) {

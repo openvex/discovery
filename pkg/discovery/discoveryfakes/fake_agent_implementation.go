@@ -11,12 +11,12 @@ import (
 )
 
 type FakeAgentImplementation struct {
-	FindDocumentsFromPurlStub        func(options.Options, discovery.VexProbe, packageurl.PackageURL) ([]*vex.VEX, error)
+	FindDocumentsFromPurlStub        func(options.Options, discovery.VexProbe, *packageurl.PackageURL) ([]*vex.VEX, error)
 	findDocumentsFromPurlMutex       sync.RWMutex
 	findDocumentsFromPurlArgsForCall []struct {
 		arg1 options.Options
 		arg2 discovery.VexProbe
-		arg3 packageurl.PackageURL
+		arg3 *packageurl.PackageURL
 	}
 	findDocumentsFromPurlReturns struct {
 		result1 []*vex.VEX
@@ -26,11 +26,11 @@ type FakeAgentImplementation struct {
 		result1 []*vex.VEX
 		result2 error
 	}
-	GetPackageProbeStub        func(options.Options, packageurl.PackageURL) (discovery.VexProbe, error)
+	GetPackageProbeStub        func(options.Options, *packageurl.PackageURL) (discovery.VexProbe, error)
 	getPackageProbeMutex       sync.RWMutex
 	getPackageProbeArgsForCall []struct {
 		arg1 options.Options
-		arg2 packageurl.PackageURL
+		arg2 *packageurl.PackageURL
 	}
 	getPackageProbeReturns struct {
 		result1 discovery.VexProbe
@@ -40,30 +40,30 @@ type FakeAgentImplementation struct {
 		result1 discovery.VexProbe
 		result2 error
 	}
-	ParsePurlStub        func(string) (packageurl.PackageURL, error)
+	ParsePurlStub        func(string) (*packageurl.PackageURL, error)
 	parsePurlMutex       sync.RWMutex
 	parsePurlArgsForCall []struct {
 		arg1 string
 	}
 	parsePurlReturns struct {
-		result1 packageurl.PackageURL
+		result1 *packageurl.PackageURL
 		result2 error
 	}
 	parsePurlReturnsOnCall map[int]struct {
-		result1 packageurl.PackageURL
+		result1 *packageurl.PackageURL
 		result2 error
 	}
 	invocations      map[string][][]interface{}
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *FakeAgentImplementation) FindDocumentsFromPurl(arg1 options.Options, arg2 discovery.VexProbe, arg3 packageurl.PackageURL) ([]*vex.VEX, error) {
+func (fake *FakeAgentImplementation) FindDocumentsFromPurl(arg1 options.Options, arg2 discovery.VexProbe, arg3 *packageurl.PackageURL) ([]*vex.VEX, error) {
 	fake.findDocumentsFromPurlMutex.Lock()
 	ret, specificReturn := fake.findDocumentsFromPurlReturnsOnCall[len(fake.findDocumentsFromPurlArgsForCall)]
 	fake.findDocumentsFromPurlArgsForCall = append(fake.findDocumentsFromPurlArgsForCall, struct {
 		arg1 options.Options
 		arg2 discovery.VexProbe
-		arg3 packageurl.PackageURL
+		arg3 *packageurl.PackageURL
 	}{arg1, arg2, arg3})
 	stub := fake.FindDocumentsFromPurlStub
 	fakeReturns := fake.findDocumentsFromPurlReturns
@@ -84,13 +84,13 @@ func (fake *FakeAgentImplementation) FindDocumentsFromPurlCallCount() int {
 	return len(fake.findDocumentsFromPurlArgsForCall)
 }
 
-func (fake *FakeAgentImplementation) FindDocumentsFromPurlCalls(stub func(options.Options, discovery.VexProbe, packageurl.PackageURL) ([]*vex.VEX, error)) {
+func (fake *FakeAgentImplementation) FindDocumentsFromPurlCalls(stub func(options.Options, discovery.VexProbe, *packageurl.PackageURL) ([]*vex.VEX, error)) {
 	fake.findDocumentsFromPurlMutex.Lock()
 	defer fake.findDocumentsFromPurlMutex.Unlock()
 	fake.FindDocumentsFromPurlStub = stub
 }
 
-func (fake *FakeAgentImplementation) FindDocumentsFromPurlArgsForCall(i int) (options.Options, discovery.VexProbe, packageurl.PackageURL) {
+func (fake *FakeAgentImplementation) FindDocumentsFromPurlArgsForCall(i int) (options.Options, discovery.VexProbe, *packageurl.PackageURL) {
 	fake.findDocumentsFromPurlMutex.RLock()
 	defer fake.findDocumentsFromPurlMutex.RUnlock()
 	argsForCall := fake.findDocumentsFromPurlArgsForCall[i]
@@ -123,12 +123,12 @@ func (fake *FakeAgentImplementation) FindDocumentsFromPurlReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeAgentImplementation) GetPackageProbe(arg1 options.Options, arg2 packageurl.PackageURL) (discovery.VexProbe, error) {
+func (fake *FakeAgentImplementation) GetPackageProbe(arg1 options.Options, arg2 *packageurl.PackageURL) (discovery.VexProbe, error) {
 	fake.getPackageProbeMutex.Lock()
 	ret, specificReturn := fake.getPackageProbeReturnsOnCall[len(fake.getPackageProbeArgsForCall)]
 	fake.getPackageProbeArgsForCall = append(fake.getPackageProbeArgsForCall, struct {
 		arg1 options.Options
-		arg2 packageurl.PackageURL
+		arg2 *packageurl.PackageURL
 	}{arg1, arg2})
 	stub := fake.GetPackageProbeStub
 	fakeReturns := fake.getPackageProbeReturns
@@ -149,13 +149,13 @@ func (fake *FakeAgentImplementation) GetPackageProbeCallCount() int {
 	return len(fake.getPackageProbeArgsForCall)
 }
 
-func (fake *FakeAgentImplementation) GetPackageProbeCalls(stub func(options.Options, packageurl.PackageURL) (discovery.VexProbe, error)) {
+func (fake *FakeAgentImplementation) GetPackageProbeCalls(stub func(options.Options, *packageurl.PackageURL) (discovery.VexProbe, error)) {
 	fake.getPackageProbeMutex.Lock()
 	defer fake.getPackageProbeMutex.Unlock()
 	fake.GetPackageProbeStub = stub
 }
 
-func (fake *FakeAgentImplementation) GetPackageProbeArgsForCall(i int) (options.Options, packageurl.PackageURL) {
+func (fake *FakeAgentImplementation) GetPackageProbeArgsForCall(i int) (options.Options, *packageurl.PackageURL) {
 	fake.getPackageProbeMutex.RLock()
 	defer fake.getPackageProbeMutex.RUnlock()
 	argsForCall := fake.getPackageProbeArgsForCall[i]
@@ -188,7 +188,7 @@ func (fake *FakeAgentImplementation) GetPackageProbeReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeAgentImplementation) ParsePurl(arg1 string) (packageurl.PackageURL, error) {
+func (fake *FakeAgentImplementation) ParsePurl(arg1 string) (*packageurl.PackageURL, error) {
 	fake.parsePurlMutex.Lock()
 	ret, specificReturn := fake.parsePurlReturnsOnCall[len(fake.parsePurlArgsForCall)]
 	fake.parsePurlArgsForCall = append(fake.parsePurlArgsForCall, struct {
@@ -213,7 +213,7 @@ func (fake *FakeAgentImplementation) ParsePurlCallCount() int {
 	return len(fake.parsePurlArgsForCall)
 }
 
-func (fake *FakeAgentImplementation) ParsePurlCalls(stub func(string) (packageurl.PackageURL, error)) {
+func (fake *FakeAgentImplementation) ParsePurlCalls(stub func(string) (*packageurl.PackageURL, error)) {
 	fake.parsePurlMutex.Lock()
 	defer fake.parsePurlMutex.Unlock()
 	fake.ParsePurlStub = stub
@@ -226,28 +226,28 @@ func (fake *FakeAgentImplementation) ParsePurlArgsForCall(i int) string {
 	return argsForCall.arg1
 }
 
-func (fake *FakeAgentImplementation) ParsePurlReturns(result1 packageurl.PackageURL, result2 error) {
+func (fake *FakeAgentImplementation) ParsePurlReturns(result1 *packageurl.PackageURL, result2 error) {
 	fake.parsePurlMutex.Lock()
 	defer fake.parsePurlMutex.Unlock()
 	fake.ParsePurlStub = nil
 	fake.parsePurlReturns = struct {
-		result1 packageurl.PackageURL
+		result1 *packageurl.PackageURL
 		result2 error
 	}{result1, result2}
 }
 
-func (fake *FakeAgentImplementation) ParsePurlReturnsOnCall(i int, result1 packageurl.PackageURL, result2 error) {
+func (fake *FakeAgentImplementation) ParsePurlReturnsOnCall(i int, result1 *packageurl.PackageURL, result2 error) {
 	fake.parsePurlMutex.Lock()
 	defer fake.parsePurlMutex.Unlock()
 	fake.ParsePurlStub = nil
 	if fake.parsePurlReturnsOnCall == nil {
 		fake.parsePurlReturnsOnCall = make(map[int]struct {
-			result1 packageurl.PackageURL
+			result1 *packageurl.PackageURL
 			result2 error
 		})
 	}
 	fake.parsePurlReturnsOnCall[i] = struct {
-		result1 packageurl.PackageURL
+		result1 *packageurl.PackageURL
 		result2 error
 	}{result1, result2}
 }

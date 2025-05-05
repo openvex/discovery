@@ -15,24 +15,24 @@ import (
 //counterfeiter:generate . agentImplementation
 
 type agentImplementation interface {
-	ParsePurl(string) (purl.PackageURL, error)
-	GetPackageProbe(options.Options, purl.PackageURL) (VexProbe, error)
-	FindDocumentsFromPurl(options.Options, VexProbe, purl.PackageURL) ([]*vex.VEX, error)
+	ParsePurl(string) (*purl.PackageURL, error)
+	GetPackageProbe(options.Options, *purl.PackageURL) (VexProbe, error)
+	FindDocumentsFromPurl(options.Options, VexProbe, *purl.PackageURL) ([]*vex.VEX, error)
 }
 
 type defaultAgentImplementation struct{}
 
 // ParsePurl checks if a purl is correctly formed
-func (pi *defaultAgentImplementation) ParsePurl(purlString string) (purl.PackageURL, error) {
+func (pi *defaultAgentImplementation) ParsePurl(purlString string) (*purl.PackageURL, error) {
 	p, err := purl.FromString(purlString)
 	if err != nil {
-		return p, err
+		return nil, err
 	}
-	return p, nil
+	return &p, nil
 }
 
 // GetPackageProbe returns a PackageProbe for the specified purl type
-func (pi *defaultAgentImplementation) GetPackageProbe(opts options.Options, p purl.PackageURL) (VexProbe, error) {
+func (pi *defaultAgentImplementation) GetPackageProbe(opts options.Options, p *purl.PackageURL) (VexProbe, error) {
 	if p, ok := probers[p.Type]; ok {
 		p.SetOptions(opts)
 		return p, nil
@@ -42,8 +42,8 @@ func (pi *defaultAgentImplementation) GetPackageProbe(opts options.Options, p pu
 
 // FetchDocuments downloads all OpenVEX documents using the PackageProbe for
 // the specified purl.
-func (pi *defaultAgentImplementation) FindDocumentsFromPurl(opts options.Options, pkgProbe VexProbe, p purl.PackageURL) ([]*vex.VEX, error) {
-	docs, err := pkgProbe.FindDocumentsFromPurl(opts, p)
+func (pi *defaultAgentImplementation) FindDocumentsFromPurl(opts options.Options, pkgProbe VexProbe, p *purl.PackageURL) ([]*vex.VEX, error) {
+	docs, err := pkgProbe.FindDocumentsFromPurl(opts, *p)
 	if err != nil {
 		return nil, fmt.Errorf("looking for documents: %w", err)
 	}

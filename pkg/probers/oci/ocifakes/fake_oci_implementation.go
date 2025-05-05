@@ -26,11 +26,11 @@ type FakeOciImplementation struct {
 		result1 []*vex.VEX
 		result2 error
 	}
-	PurlToReferenceStub        func(options.Options, packageurl.PackageURL) (name.Reference, error)
+	PurlToReferenceStub        func(options.Options, *packageurl.PackageURL) (name.Reference, error)
 	purlToReferenceMutex       sync.RWMutex
 	purlToReferenceArgsForCall []struct {
 		arg1 options.Options
-		arg2 packageurl.PackageURL
+		arg2 *packageurl.PackageURL
 	}
 	purlToReferenceReturns struct {
 		result1 name.Reference
@@ -134,12 +134,12 @@ func (fake *FakeOciImplementation) DownloadDocumentsReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeOciImplementation) PurlToReference(arg1 options.Options, arg2 packageurl.PackageURL) (name.Reference, error) {
+func (fake *FakeOciImplementation) PurlToReference(arg1 options.Options, arg2 *packageurl.PackageURL) (name.Reference, error) {
 	fake.purlToReferenceMutex.Lock()
 	ret, specificReturn := fake.purlToReferenceReturnsOnCall[len(fake.purlToReferenceArgsForCall)]
 	fake.purlToReferenceArgsForCall = append(fake.purlToReferenceArgsForCall, struct {
 		arg1 options.Options
-		arg2 packageurl.PackageURL
+		arg2 *packageurl.PackageURL
 	}{arg1, arg2})
 	stub := fake.PurlToReferenceStub
 	fakeReturns := fake.purlToReferenceReturns
@@ -160,13 +160,13 @@ func (fake *FakeOciImplementation) PurlToReferenceCallCount() int {
 	return len(fake.purlToReferenceArgsForCall)
 }
 
-func (fake *FakeOciImplementation) PurlToReferenceCalls(stub func(options.Options, packageurl.PackageURL) (name.Reference, error)) {
+func (fake *FakeOciImplementation) PurlToReferenceCalls(stub func(options.Options, *packageurl.PackageURL) (name.Reference, error)) {
 	fake.purlToReferenceMutex.Lock()
 	defer fake.purlToReferenceMutex.Unlock()
 	fake.PurlToReferenceStub = stub
 }
 
-func (fake *FakeOciImplementation) PurlToReferenceArgsForCall(i int) (options.Options, packageurl.PackageURL) {
+func (fake *FakeOciImplementation) PurlToReferenceArgsForCall(i int) (options.Options, *packageurl.PackageURL) {
 	fake.purlToReferenceMutex.RLock()
 	defer fake.purlToReferenceMutex.RUnlock()
 	argsForCall := fake.purlToReferenceArgsForCall[i]

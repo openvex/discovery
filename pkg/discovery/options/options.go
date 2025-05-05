@@ -11,7 +11,7 @@ import (
 
 type Options struct {
 	Logger  *slog.Logger
-	Context context.Context
+	Context context.Context //nolint:containedctx
 	// Prober options is a map keyed by purl types that holds free form structs
 	// that are passed as options to the corresponding PackageProber.
 	ProberOptions map[string]interface{}
