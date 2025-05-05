@@ -12,9 +12,8 @@ import (
 	"github.com/openvex/go-vex/pkg/vex"
 	purl "github.com/package-url/packageurl-go"
 
-	"github.com/openvex/discovery/pkg/probers/oci"
-
 	"github.com/openvex/discovery/pkg/discovery/options"
+	"github.com/openvex/discovery/pkg/probers/oci"
 )
 
 var (

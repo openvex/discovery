@@ -8,12 +8,13 @@ import (
 	"testing"
 
 	"github.com/google/go-containerregistry/pkg/name"
-	"github.com/openvex/discovery/pkg/discovery/options"
-	"github.com/openvex/discovery/pkg/probers/oci/ocifakes"
 	"github.com/openvex/go-vex/pkg/vex"
 	purl "github.com/package-url/packageurl-go"
 	ociremote "github.com/sigstore/cosign/v2/pkg/oci/remote"
 	"github.com/stretchr/testify/require"
+
+	"github.com/openvex/discovery/pkg/discovery/options"
+	"github.com/openvex/discovery/pkg/probers/oci/ocifakes"
 )
 
 func TestDownloadDocuments(t *testing.T) {

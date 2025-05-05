@@ -7,11 +7,12 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/openvex/discovery/pkg/discovery"
-	"github.com/openvex/discovery/pkg/discovery/discoveryfakes"
 	"github.com/openvex/go-vex/pkg/vex"
 	"github.com/package-url/packageurl-go"
 	"github.com/stretchr/testify/require"
+
+	"github.com/openvex/discovery/pkg/discovery"
+	"github.com/openvex/discovery/pkg/discovery/discoveryfakes"
 )
 
 func TestProbePurl(t *testing.T) {
@@ -34,7 +35,7 @@ func TestProbePurl(t *testing.T) {
 			name: "parsepParsePurl fails",
 			prepare: func(a *discovery.Agent) {
 				impl := &discoveryfakes.FakeAgentImplementation{}
-				impl.ParsePurlReturns(packageurl.PackageURL{}, syntErr)
+				impl.ParsePurlReturns(&packageurl.PackageURL{}, syntErr)
 				a.SetImplementation(impl)
 			},
 			mustErr: true,
@@ -43,7 +44,7 @@ func TestProbePurl(t *testing.T) {
 			name: "GetPackageProbe fails",
 			prepare: func(a *discovery.Agent) {
 				impl := &discoveryfakes.FakeAgentImplementation{}
-				impl.ParsePurlReturns(packageurl.PackageURL{}, nil)
+				impl.ParsePurlReturns(&packageurl.PackageURL{}, nil)
 				impl.GetPackageProbeReturns(nil, syntErr)
 				a.SetImplementation(impl)
 			},
@@ -53,7 +54,7 @@ func TestProbePurl(t *testing.T) {
 			name: "FindDocumentsFromPurl fails",
 			prepare: func(a *discovery.Agent) {
 				impl := &discoveryfakes.FakeAgentImplementation{}
-				impl.ParsePurlReturns(packageurl.PackageURL{}, nil)
+				impl.ParsePurlReturns(&packageurl.PackageURL{}, nil)
 				impl.FindDocumentsFromPurlReturns(nil, syntErr)
 				a.SetImplementation(impl)
 			},
