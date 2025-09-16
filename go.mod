@@ -5,7 +5,7 @@ go 1.24.6
 require (
 	github.com/google/go-containerregistry v0.20.6
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.12.0
-	github.com/openvex/go-vex v0.2.6
+	github.com/openvex/go-vex v0.2.7
 	github.com/package-url/packageurl-go v0.1.3
 	github.com/sigstore/cosign/v2 v2.6.0
 	github.com/stretchr/testify v1.11.1
