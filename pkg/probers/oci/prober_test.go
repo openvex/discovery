@@ -10,7 +10,7 @@ import (
 	"github.com/google/go-containerregistry/pkg/name"
 	"github.com/openvex/go-vex/pkg/vex"
 	purl "github.com/package-url/packageurl-go"
-	ociremote "github.com/sigstore/cosign/v2/pkg/oci/remote"
+	ociremote "github.com/sigstore/cosign/v3/pkg/oci/remote"
 	"github.com/stretchr/testify/require"
 
 	"github.com/openvex/discovery/pkg/discovery/options"
