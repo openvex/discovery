@@ -8,7 +8,7 @@ import (
 	"github.com/openvex/discovery/pkg/discovery/options"
 	"github.com/openvex/go-vex/pkg/vex"
 	packageurl "github.com/package-url/packageurl-go"
-	ocia "github.com/sigstore/cosign/v2/pkg/oci"
+	ocia "github.com/sigstore/cosign/v3/pkg/oci"
 )
 
 type FakeOciImplementation struct {
