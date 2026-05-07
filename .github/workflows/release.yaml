@@ -19,6 +19,6 @@ jobs:
 
     steps:
       - name: Publish Release
-        uses: kubernetes-sigs/release-actions/publish-release@ab33480f30919958240822cfc29af8d9903f313b # v0.4.1
+        uses: kubernetes-sigs/release-actions/publish-release@8753ea6bdadb814d779c6ec34eaca689dbfb492b # v0.4.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
