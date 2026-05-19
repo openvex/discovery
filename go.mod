@@ -1,12 +1,12 @@
 module github.com/openvex/discovery
 
-go 1.25.6
+go 1.25.8
 
 require (
 	github.com/google/go-containerregistry v0.21.0
 	github.com/maxbrunsfeld/counterfeiter/v6 v6.12.1
-	github.com/openvex/go-vex v0.2.7
-	github.com/package-url/packageurl-go v0.1.3
+	github.com/openvex/go-vex v0.2.8
+	github.com/package-url/packageurl-go v0.1.5
 	github.com/sigstore/cosign/v2 v2.6.2
 	github.com/stretchr/testify v1.11.1
 )
@@ -15,6 +15,7 @@ require (
 	github.com/Azure/go-ansiterm v0.0.0-20250102033503-faa5f7b0171c // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/blang/semver v3.5.1+incompatible // indirect
+	github.com/carabiner-dev/attestation v0.2.1 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/containerd/stargz-snapshotter/estargz v0.18.2 // indirect
 	github.com/coreos/go-oidc/v3 v3.17.0 // indirect
@@ -58,7 +59,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-retryablehttp v0.7.8 // indirect
-	github.com/in-toto/attestation v1.1.2 // indirect
+	github.com/in-toto/attestation v1.2.0 // indirect
 	github.com/in-toto/in-toto-golang v0.9.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jedisct1/go-minisign v0.0.0-20230811132847-661be99b8267 // indirect
