@@ -306,7 +306,7 @@ func (di *defaultImplementation) DownloadDocuments(opts options.Options, se oci.
 			continue
 		}
 
-		docs = append(docs, &statement.Predicate)
+		docs = append(docs, &statement.Predicate.VEX)
 	}
 
 	return docs, nil
