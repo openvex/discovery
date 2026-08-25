@@ -62,7 +62,7 @@ type platformList []struct {
 }
 
 func (pl *platformList) String() string {
-	r := []string{}
+	r := make([]string, 0, len(*pl))
 	for _, p := range *pl {
 		r = append(r, p.platform.String())
 	}

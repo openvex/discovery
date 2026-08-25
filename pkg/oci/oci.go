@@ -139,7 +139,7 @@ func GenerateReferenceIdentifiers(refString, os, arch string) (IdentifiersBundle
 
 // generatePurlVariants
 func generateImagePurlVariants(registryString, imageName, digestString, tag, os, arch string) []string {
-	purls := []string{}
+	purls := make([]string, 0, 2)
 
 	// Purl with full qualifiers
 	qMap := map[string]string{}
