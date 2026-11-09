@@ -31,7 +31,7 @@ jobs:
 
       - name: Resolve Go versions
         id: go-versions
-        uses: carabiner-dev/actions/go/versions@d41fe10fe88deaf493ce026007da73738b9f570c # v1.3.0
+        uses: carabiner-dev/actions/go/versions@63d43b57262e65927864c8f7ca0a6a8efe06acc0 # v1.3.1
 
       - name: Build version matrix
         id: matrix
@@ -70,7 +70,7 @@ jobs:
         name: Setup crane 🪿 ♥️ 🏗️
 
       - name: Install Cosign 🪿 ♥️ ·∫·
-        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+        uses: sigstore/cosign-installer@756fe2d284c7292c4e9b62c8a28f1e5629c59532 # v4.1.3
 
       - name: Set up Go ${{ matrix.go-version }}
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
